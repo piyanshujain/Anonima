@@ -1,0 +1,16 @@
+<%- include ("./partials/header") %>
+<div class="ui main text container segment">
+    <div class="ui huge header">New Post</div>
+    <form class="ui form" action="/anons" method="POST">
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="name" autocomplete="off" required>
+        </div>
+        <div class="field">
+            <label>Post Content</label>
+            <textarea name="body" p{ white-space: pre-line } required></textarea>
+        </div>
+        <button class="ui big violet basic button">Create Post</button>
+    </form>
+</div>
+<%- include ("./partials/footer") %>

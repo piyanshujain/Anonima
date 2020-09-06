@@ -1,0 +1,79 @@
+
+<%- include ("./partials/header") %>
+<div class="ui main text container">
+   	    <div class="ui huge header"><%=anon.title%></div>
+        <div class="ui top attached segment">
+	        <div class="item">
+	           <div class="content">
+	                <div class="meta">
+    	                <span><%= anon.created.toDateString() %></span>
+	                </div>
+            	     <div class="description">
+            	        <p><%- anon.body %></p>
+            	     </div>
+                   <div class="well">
+	            </div>
+            </div>
+          </div>
+        </div>
+        
+                                <div class="ui main text container">
+                                   	    <div class="ui huge header">Comments</div>
+                                        <div class="ui top attached segment">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div style="width: 30%; margin: 25px auto;">
+                                                                    <form class="ui form"  action="/anons/<%= anon._id %>/comments" method="POST">
+                                                                        <div class="form-group">
+                                                                          <label for="">Add Comment </label>
+                                                                           <div class="field">
+                                                                                <input class="form-control" type="text" name="comment[text]" placeholder="Add new comment" autocomplete="off" required>
+                                                                               </div>
+                                                                               </div>
+                                                                         <div class="form-group">
+                                                                           <div class="ui submit button">
+                                                                             <button class="btn btn-lg btn-primary btn-block">Add</button>
+                                                                           </div>
+                                                                         </div>
+                                                                        </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p>========================================================================</p>
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                  <div style="width: 30%; margin: 25px auto;">
+                                                                    <form class="ui form"  action="/anons/<%= anon._id %>/anoncomments" method="POST">
+                                                                        <div class="form-group">
+                                                                          <label for="">Add Anonymous Comment </label>
+                                                                           <div class="field">
+                                                                                <input class="form-control" type="text" name="comment[text]" placeholder="Add new comment anonymously" autocomplete="off" required>
+                                                                               </div>
+                                                                               </div>
+                                                                         <div class="form-group">
+                                                                           <div class="ui submit button">
+                                                                             <button class="btn btn-lg btn-primary btn-block">Add</button>
+                                                                           </div>
+                                                                         </div>
+                                                                        </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <p>========================================================================</p>
+            <% anon.comments.forEach(function(comment){ %>
+           <div class="row">
+               <div class="col-md-12">
+                   <strong><%= comment.author.username %></strong>
+                   <span><%= comment.created.toDateString() %></span>
+                   <p>
+                       <%= comment.text %>
+                   </p>
+               </div>
+           </div>
+       <% }) %>
+     </div>
+   </div>
+   </div>
+
+<%- include ("./partials/footer") %>
